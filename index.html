@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="fr" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#111827">
+  <meta name="description" content="JACK, catalogue multimédia légal de démonstration, sans publicité.">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="icons/icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+  <title>JACK</title>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#home" aria-label="JACK — Accueil">JACK</a>
+    <button id="installButton" class="install-button" type="button" hidden>Installer</button>
+  </header>
+
+  <main id="mainContent" tabindex="-1">
+    <section id="home" class="view active" aria-labelledby="homeTitle">
+      <div class="hero">
+        <p class="eyebrow" data-i18n="legalDemo">Catalogue légal de démonstration</p>
+        <h1 id="homeTitle" data-i18n="welcome">Regardez, lisez, découvrez.</h1>
+        <p data-i18n="welcomeText">Une première version de JACK, gratuite et sans publicité.</p>
+        <a class="primary-button" href="#catalog" data-i18n="explore">Explorer le catalogue</a>
+      </div>
+
+      <div class="section-heading">
+        <h2 data-i18n="featured">À découvrir</h2>
+      </div>
+      <div id="featuredGrid" class="card-grid" aria-live="polite"></div>
+    </section>
+
+    <section id="catalog" class="view" aria-labelledby="catalogTitle">
+      <div class="section-heading">
+        <h1 id="catalogTitle" data-i18n="catalog">Catalogue</h1>
+      </div>
+      <label class="search-box">
+        <span class="sr-only" data-i18n="search">Rechercher</span>
+        <input id="searchInput" type="search" data-i18n-placeholder="searchPlaceholder" placeholder="Rechercher un titre ou un genre…" autocomplete="off">
+      </label>
+      <div id="catalogGrid" class="card-grid" aria-live="polite"></div>
+      <p id="emptyState" class="empty-state" data-i18n="noResults" hidden>Aucun résultat.</p>
+    </section>
+
+    <section id="library" class="view" aria-labelledby="libraryTitle">
+      <div class="section-heading">
+        <h1 id="libraryTitle" data-i18n="library">Ma liste</h1>
+      </div>
+      <div id="favoritesGrid" class="card-grid" aria-live="polite"></div>
+      <p id="favoritesEmpty" class="empty-state" data-i18n="favoritesEmpty">Ajoutez des titres à votre liste.</p>
+    </section>
+
+    <section id="settings" class="view" aria-labelledby="settingsTitle">
+      <div class="section-heading">
+        <h1 id="settingsTitle" data-i18n="settings">Réglages</h1>
+      </div>
+      <div class="settings-card">
+        <label for="languageSelect" data-i18n="language">Langue de l’interface</label>
+        <select id="languageSelect">
+          <option value="fr">Français</option>
+          <option value="en">English</option>
+          <option value="ar">العربية</option>
+        </select>
+        <p class="notice" data-i18n="rightsNotice">Les titres présentés sont fictifs. Aucun contenu commercial n’est distribué.</p>
+      </div>
+    </section>
+  </main>
+
+  <nav class="bottom-nav" aria-label="Navigation principale">
+    <a href="#home" data-route="home"><span aria-hidden="true">⌂</span><span data-i18n="home">Accueil</span></a>
+    <a href="#catalog" data-route="catalog"><span aria-hidden="true">⌕</span><span data-i18n="catalog">Catalogue</span></a>
+    <a href="#library" data-route="library"><span aria-hidden="true">♡</span><span data-i18n="library">Ma liste</span></a>
+    <a href="#settings" data-route="settings"><span aria-hidden="true">⚙</span><span data-i18n="settings">Réglages</span></a>
+  </nav>
+
+  <template id="cardTemplate">
+    <article class="media-card">
+      <div class="poster" aria-hidden="true"><span class="poster-symbol"></span></div>
+      <div class="card-content">
+        <p class="meta"></p>
+        <h3></h3>
+        <p class="description"></p>
+        <button class="favorite-button" type="button"></button>
+      </div>
+    </article>
+  </template>
+
+  <script src="app.js" defer></script>
+</body>
+</html>
